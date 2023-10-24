@@ -2,77 +2,32 @@ const counerInfo = document.querySelector('.counter-info>span');
 const timeInfo = document.querySelector('.time-info>span');
 const helpInfo = document.querySelector('.help-info>span');
 const bestInfo = document.querySelector('.best-info>span');
-const startGame = document.querySelector('.start-button>button');
-const stopGame = document.querySelector('.stop-button>button')
-const helpGame = document.querySelector('.help-button>button');
-const resetGame = document.querySelector('.reset-button>button');
+const ruleInfo = document.querySelector('.rule-info>p');
 const ruleFone = document.querySelector('.rule-fone');
 const winGame = document.querySelector('.win-game');
 const winGameText = document.querySelector('.win-game>p')
 const loseGame = document.querySelector('.lose-game>p');
-const ruleInfo = document.querySelector('.rule-info>p');
 const audioFone = document.querySelector('.audio-fone');
 const audioWin = document.querySelector('.audio-win');
 const audioLose = document.querySelector('.audio-lose');
-helpGame.parentNode.classList.add('off-button')
-resetGame.parentNode.classList.add('off-button')
-resetGame.disabled = true;
 const puzzleContainer = document.getElementById('puzzle-container');
 
-startGame.onclick = () => {
-    shuffleTiles()
-    createTiles();
-    startGame.style.display = 'none';
-    stopGame.style.display = 'block';
-    ruleFone.style.display = 'none';
-    ruleInfo.style.display = 'none';
-    loseGame.style.display = 'none';
-    audioWin.pause();
-    audioFone.load();
-    audioFone.play();
-    flagTime = true;
-    timeCountdownFunc();
-    helpInfo.innerText = 3;
-    helpGame.parentNode.classList.remove('off-button');
-    resetGame.parentNode.classList.remove('off-button');
-    resetGame.disabled = false;
-    counerInfo.innerText = currentCout;
-    winGame.style.display = 'none';
-    winGameText.style.display = 'none'
-    incrementCounter('off')
-};
+const startGame = document.querySelector('.start-button>button');
+startGame.onclick = () => {processStartStop(true)};
+    
+const stopGame = document.querySelector('.stop-button>button')
+stopGame.onclick = ()=> {processStartStop(false)};
 
-stopGame.onclick = stopGameFunc;
-function stopGameFunc() {
-    startGame.style.display = 'block';
-    stopGame.style.display = 'none';
-    audioFone.pause();
-    audioLose.play();
-    ruleFone.style.display = 'block';
-    loseGame.style.display = 'block';
-    flagTime = false;
-    helpInfo.innerText = 0;
-    helpGame.parentNode.classList.add('off-button')
-    resetGame.parentNode.classList.add('off-button')
-    resetGame.disabled = true;
-    incrementCounter('off')
-    shuffleTiles()
-};
-
-resetGame.onclick = () => {
-    audioFone.load();
-    audioFone.play();
-    timeCountdownFunc();
-    helpInfo.innerText = 3;
-    helpGame.parentNode.classList.remove('off-button');
-    shuffleTiles();
-    createTiles();
-    incrementCounter('off')
-};
-
+const resetGame = document.querySelector('.reset-button>button');
+resetGame.parentNode.classList.add('off-button')
+resetGame.disabled = true;
+resetGame.onclick = () => {processStartStop(true)};
+    
+const helpGame = document.querySelector('.help-button>button');
+helpGame.parentNode.classList.add('off-button')
 helpGame.onclick = () => {
     if (helpInfo.innerText > 0) {
-        claerPieces()
+        hideTiles()
         helpInfo.innerText = helpInfo.innerText - 1
     }
     if (helpInfo.innerText < 1) {
@@ -80,11 +35,49 @@ helpGame.onclick = () => {
     }
 };
 
+function processStartStop(status) {
+    if (status) {
+        shuffleTiles();
+        createTiles();
+        incrementCounter('off')
+        flagTime = true;
+        timeCountdownFunc();
+        startGame.style.display = 'none';
+        stopGame.style.display = 'block';
+        ruleFone.style.display = 'none';
+        ruleInfo.style.display = 'none';
+        loseGame.style.display = 'none';
+        audioWin.pause();
+        audioFone.load();
+        audioFone.play();
+        resetGame.disabled = false;
+        counerInfo.innerText = currentCout;
+        winGame.style.display = 'none';
+        winGameText.style.display = 'none'
+        helpInfo.innerText = 3;
+        helpGame.parentNode.classList.remove('off-button');
+        resetGame.parentNode.classList.remove('off-button');
+    } else {
+        startGame.style.display = 'block';
+        stopGame.style.display = 'none';
+        ruleFone.style.display = 'block';
+        loseGame.style.display = 'block';
+        audioFone.pause();
+        audioLose.play();
+        flagTime = false;
+        helpInfo.innerText = 0;
+        helpGame.parentNode.classList.add('off-button')
+        resetGame.parentNode.classList.add('off-button')
+        resetGame.disabled = true;
+        incrementCounter('off')
+    }
+}
+
 let flagTime = false;
 let timerId;
 function timeCountdownFunc() {
     let timer = 900;
-    if (timerId) clearTimeout(timerId)
+    if (timerId){clearTimeout(timerId)} 
     function timeCount() {
         if (timer > 0 && flagTime === true) {
             timer--;
@@ -93,7 +86,7 @@ function timeCountdownFunc() {
         } else {
             timer = 0;
             timeInfo.innerText = 0;
-            stopGameFunc()
+            processStartStop(false)
         }
     }
     if (flagTime) timeCount()
@@ -140,7 +133,7 @@ function createTiles() {
     }
 };
 
-function claerPieces() {
+function hideTiles() {
     winGame.style.display = 'block'
     setTimeout(() => { winGame.style.display = 'none' }, 3000)
 };
