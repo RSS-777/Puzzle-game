@@ -124,9 +124,10 @@ body {
     top:100px;
     color:white;
 }
-.rule-info p::first-line{
+.rule-info p>span{
    color:rgb(252, 0, 0);
    font-size: 28px;
+   padding-left: 20px;
    font-weight: bold;
    font-style: italic;
 }
@@ -484,13 +485,14 @@ body {
         height: 328px;
     }
     .rule-info p{
-        font-size: 18px;
+        font-size: 16px;
         padding-left: 20px;
         padding-right: 20px;
         top:80px;
     }
-    .rule-info p::first-line{
-       font-size: 22px;
+    .rule-info p>span{
+       font-size: 18px;
+       padding-left: 35px;
     }
     .win-game{
         top: 48px;
