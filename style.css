@@ -127,7 +127,10 @@ body {
 .rule-info p>span{
    color:rgb(252, 0, 0);
    font-size: 28px;
-   padding-left: 20px;
+   margin-left: -20px;
+   display: inline-block;
+   width: 400px;
+   text-align: center;
    font-weight: bold;
    font-style: italic;
 }
@@ -492,7 +495,7 @@ body {
     }
     .rule-info p>span{
        font-size: 18px;
-       padding-left: 35px;
+       width: 320px;
     }
     .win-game{
         top: 48px;
