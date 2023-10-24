@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Puzzle-RSS</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="box-Game">
+        <p class="gameName">Puzzle</p>
+        <div class="scoreboard">
+            <div class="counter-info">
+                Count:<span></span>
+            </div>
+            <div class="time-info">
+                Time:<span></span>
+            </div>
+            <div class="help-info">
+                Help:<span></span>
+            </div>
+            <div class="best-info">
+                Best:<span></span>
+            </div>
+        </div>
+        <div id="puzzle-container"></div>
+        <div class="buttons-box">
+            <div class="start-button">
+                <button type="button">Start</button>
+            </div>
+            <div class="stop-button">
+                <button type="button">Stop</button>
+            </div>
+            <div class="help-button">
+                <button type="button">Help</button>
+            </div>
+            <div class="reset-button">
+                <button type="button">reset</button>
+            </div>
+        </div>
+        <div class="rule-fone"></div>
+        <div class="win-game">
+            <p>You win!</p>
+        </div>
+        <div class="lose-game">
+            <p>You Lose!</p>
+        </div>
+        <div class="rule-info">
+            <p>
+                Welcome to "Puzzle game"!<br><br>
+                Rules:<br>
+                1. Make a picture in 15 minutes!<br>
+                2. Have 3 hints per game.<br><br>
+                Management:<br>
+                Left mouse button on the element you want to move!
+            </p>
+        </div>
+        <audio class="audio-fone">
+            <source src="./audio/fon.mp3" type="audio/mpeg">
+        </audio>
+        <audio class="audio-win">
+            <source src="./audio/win.mp3" type="audio/mpeg">
+        </audio>
+        <audio class="audio-lose">
+            <source src="./audio/lose.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
