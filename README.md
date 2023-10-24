@@ -13,5 +13,5 @@ ___
  <img src="./images/image-game.png" width="50%">
 
 ___
-### Drow-model :
- <img src="./images/drow-model.jpg" width="50%">
+### Draw-model :
+ <img src="./images/draw-model.jpg" width="50%">
