@@ -1,0 +1,685 @@
+body {
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    background-image: radial-gradient(rgb(255, 255, 255), rgb(0, 1, 34));
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+.gameName{
+    position: absolute;
+    z-index: 100;
+    top:-100px;
+    left:148px;
+    font-size: 40px;
+    font-weight: 800;
+    text-shadow: 2px 2px 5px black;
+    animation: gameName 5s infinite linear alternate-reverse;
+}
+@keyframes gameName{
+   0%{color: red;} 
+   50%{color: yellow}
+   100%{color: green;}
+}
+.scoreboard{
+    position: relative;
+    width: 406px;
+    height: 59px;
+}
+.scoreboard > .counter-info{
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+    top: 5px;
+    color: white;
+    font-size: 24px;
+    user-select: none;
+    border: 1px solid white;
+    padding-left: 5px;
+    padding-top: 8px;
+    border-radius: 8px 8px 5px 0;
+    width: 140px;
+}
+.counter-info > span{
+    padding-left: 5px;
+}
+.scoreboard > .time-info{
+    position: absolute;
+    top:5px;
+    left: 157px;
+    bottom: 25px;
+    color: white;
+    font-size: 16px;
+    user-select: none;
+    border: 1px solid white;
+    padding-left: 10px;
+    border-radius: 5px;
+    width: 80px;
+    height: 22px;
+}
+.time-info > span{
+    padding-left: 5px;
+}
+.scoreboard > .help-info{
+    position: absolute;
+    left: 157px;
+    bottom: 5px;
+    color: white;
+    font-size: 16px;
+    user-select: none;
+    border: 1px solid white;
+    padding-left: 12px;
+    border-radius: 5px;
+    width: 80px;
+    height: 22px;
+}
+.help-info > span{
+    padding-left:5px;
+}
+.scoreboard > .best-info{
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    top:5px;
+    color: white;
+    font-size: 24px;
+    user-select: none;
+    border: 1px solid white;
+    border-radius: 8px 8px 0 5px;
+    padding-left: 5px;
+    padding-top: 8px;
+    width: 140px;
+}
+.best-info > span {
+    padding-left:5px;
+}
+.box-Game {
+    position: relative;
+    width: 407px;
+    height: 530px;
+    background-color: gray;
+    border-radius: 8px;
+    box-shadow: 0 0 12px 4px black;
+}
+#puzzle-container {
+    width: 400px;
+    height: 406px;
+    display: grid;
+    grid-template: repeat(5, 1fr)/ repeat(5, 1fr);
+}
+.rule-fone{
+    display: block;
+    position: absolute;
+    top: 59px;
+    width: 408px;
+    height: 408px;
+    background-color: rgb(1, 1, 1);
+}
+.rule-info p{
+    position: absolute;
+    font-size: 24px;
+    padding-left: 20px;
+    top:100px;
+    color:white;
+}
+.rule-info p::first-line{
+   color:rgb(252, 0, 0);
+   font-size: 28px;
+   font-weight: bold;
+   font-style: italic;
+}
+.win-game{
+    display: none;
+    position: absolute;
+    top: 59px;
+    width: 408px;
+    height: 408px;
+    background-image: url(./images/imagePuzzles.jpg);
+    background-size: cover;
+} 
+.win-game p{
+    display: none;
+    position: absolute;
+    color:rgb(255, 0, 0);
+    text-shadow: 2px 2px 8px black;
+    font-size: 70px;
+    font-weight: 1000;
+    top:70px;
+    left: 70px;
+    text-align: center;
+    animation: winAnimation 3s linear infinite alternate-reverse;
+}
+@keyframes winAnimation {
+    0%{}
+    50%{color:rgb(4, 0, 255)}
+    100%{color: rgb(255, 230, 0);}
+}
+.lose-game p{
+    position: absolute;
+    color:rgb(255, 0, 0);
+    text-shadow: 2px 2px 8px black;
+    font-size: 60px;
+    font-weight: 1000;
+    z-index: 2;
+    top:100px;
+    left: 70px;
+    text-align: center;
+    display: none;
+}
+.buttons-box{
+    position: relative;
+    top:8px;
+    left:7px;
+    height: 48px;
+    width: 390px;
+    border:2px solid rgb(255, 255, 255);
+    border-radius: 0 0 8px 8px;
+}
+.start-button > button{
+    position: absolute;
+    margin: 8px 12px;
+    width: 110px;
+    height: 30px;
+    font-size: 21px;
+    border-radius: 0 15px 0 0;
+    border: 2px groove rgb(250, 250, 250);
+    background-color: #3498db;
+    box-shadow:  1px 1px 5px 1px rgb(0, 0, 0);
+    text-shadow: 1px 1px 3px rgb(255, 132, 0);
+    color:white;
+    font-family: Tahoma, sans-serif;
+    font-style:oblique;
+    text-transform: uppercase;
+    user-select: none;
+}
+.start-button > button:hover{
+    box-shadow:  1px 1px 2px 0 rgb(255, 255, 255);
+    color:rgb(251, 0, 0);
+}
+.start-button > button:active{
+    color: yellow;
+}
+.stop-button > button{
+    display: none;
+    position: absolute;
+    margin: 8px 12px;
+    width: 110px;
+    height: 30px;
+    font-size: 21px;
+    border-radius: 0 15px 0 0;
+    border: 2px groove rgb(250, 250, 250);
+    background-color: #3498db;
+    box-shadow:  1px 1px 5px 1px rgb(0, 0, 0);
+    text-shadow: 1px 1px 3px rgb(255, 132, 0);
+    color:white;
+    font-family: Tahoma, sans-serif;
+    font-style:oblique;
+    text-transform: uppercase;
+    user-select: none;
+}
+.stop-button > button:hover{
+    box-shadow:  1px 1px 2px 0 rgb(255, 255, 255);
+    color:rgb(251, 0, 0);
+}
+.stop-button > button:active{
+    color: yellow;
+}
+.help-button > button {
+    position: absolute;
+    top:0;
+    left: 140px;
+    margin: 8px 10px;
+    width: 90px;
+    height: 30px;
+    font-size: 21px;
+    border-radius: 15px 15px 0 0;
+    border: 2px groove rgb(255, 255, 255);
+    background-color: #3498db;
+    box-shadow:  1px 1px 5px 1px rgb(0, 0, 0);
+    text-shadow: 1px 1px 3px rgb(255, 132, 0);
+    color:white;
+    font-family: Tahoma, sans-serif;
+    font-style:oblique;
+    text-transform: uppercase;
+    user-select: none;
+}
+.help-button > button:hover{
+    box-shadow:  1px 1px 2px 0 rgb(255, 255, 255);
+    color:rgb(251, 0, 0);
+}
+.help-button > button:active{
+    color: yellow;
+}
+.reset-button > button{
+    position: absolute;
+    top:0;
+    right: 0;
+    margin: 8px 12px;
+    width: 110px;
+    height: 30px;
+    font-size: 21px;
+    border-radius: 15px 0 0 0;
+    border: 2px groove rgb(255, 255, 255);
+    background-color: #3498db;
+    box-shadow:  1px 1px 5px 1px rgb(0, 0, 0);
+    text-shadow: 1px 1px 3px rgb(255, 132, 0);
+    color:white;
+    font-family: Tahoma, sans-serif;
+    font-style:oblique;
+    text-transform: uppercase;
+    user-select: none;
+}
+.reset-button > button:hover{
+    box-shadow:  1px 1px 2px 0 rgb(255, 255, 255);
+    color:rgb(251, 0, 0);
+}
+.reset-button > button:active{
+    color: yellow;
+}
+.off-button>button{
+    background-color: lightcoral;
+    box-shadow:  1px 1px 4px 1px rgb(255, 109, 109);
+    text-shadow: 1px 1px 3px rgb(255, 0, 0);
+}
+.off-button>button:hover {
+    box-shadow:  1px 1px 2px 0 rgb(255, 255, 255);
+    color:rgb(251, 0, 0);
+}
+.tile {
+    width: 80px;
+    height: 80px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+.empty {
+    background-color: #000000;
+}
+.piece1 {
+    background-image: url(./images/imagePuzzles.jpg);
+    background-position: 1px 0;
+    top:0;
+    left:0;
+}
+.piece2 {
+    background-image: url(./images/imagePuzzles.jpg);
+    background-position: -80px -1px;
+    top:0;
+    left:80px;
+}
+.piece3 {
+    background-image: url(./images/imagePuzzles.jpg);
+    background-position: -160px -1px;
+    top:0;
+    left:160px;
+}
+.piece4 {
+    background-image: url(./images/imagePuzzles.jpg);
+    background-position: -240px 0;
+    top:0;
+    left:240px;
+} 
+.piece5 {
+    background-image: url(./images/imagePuzzles.jpg);
+    background-position: -320px 0;
+    top:0;
+    left:320px;
+}
+.piece6 {
+    background-image: url(./images/imagePuzzles.jpg);
+    background-position: -1px -80px;
+    top:80px;
+    left:0;
+}
+.piece7 {
+    background-image: url(./images/imagePuzzles.jpg);
+    background-position: -80px -80px;
+    top:80px;
+    left:80px;
+} 
+.piece8 {
+    background-image: url(./images/imagePuzzles.jpg);
+    background-position: -160px -80px;
+    top:80px;
+    left:160px
+}
+.piece9 {
+    background-image: url(./images/imagePuzzles.jpg);
+    background-position: -240px -80px;
+    top:80px;
+    left:240px;
+} 
+.piece10 {
+    background-image: url(./images/imagePuzzles.jpg);
+    background-position: -320px -80px;
+    top:80px;
+    left:320px
+}
+.piece11 {
+    background-image: url(./images/imagePuzzles.jpg);
+    background-position: -1px -160px;
+    top:160px;
+    left:0;
+}
+.piece12 {
+    background-image: url(./images/imagePuzzles.jpg);
+    background-position: -80px -160px;
+    top:160px;
+    left:80px;
+} 
+.piece13 {
+    background-image: url(./images/imagePuzzles.jpg);
+    background-position: -160px -160px;
+    top:160px;
+    left:160px;
+}
+.piece14 {
+    background-image: url(./images/imagePuzzles.jpg);
+    background-position: -240px -160px;
+    top:160px;
+    left:240px;
+} 
+.piece15 {
+    background-image: url(./images/imagePuzzles.jpg);
+    background-position: -320px -160px;
+    top:160px;
+    left:320px;
+}
+.piece16 {
+    background-image: url(./images/imagePuzzles.jpg);
+    background-position: -1px -240px;
+    top:240px;
+    left:0;
+}
+.piece17 {
+    background-image: url(./images/imagePuzzles.jpg);
+    background-position: -80px -240px;
+    top:240px;
+    left:80px;
+} 
+.piece18 {
+    background-image: url(./images/imagePuzzles.jpg);
+    background-position: -160px -240px;
+    top:240px;
+    left:160px;
+}
+.piece19 {
+    background-image: url(./images/imagePuzzles.jpg);
+    background-position: -240px -240px;
+    top:240px;
+    left:240px
+} 
+.piece20 {
+    background-image: url(./images/imagePuzzles.jpg);
+    background-position: -320px -240px;
+    top:240px;
+    left:320px;
+}
+.piece21 {
+    background-image: url(./images/imagePuzzles.jpg);
+    background-position: -1px -320px;
+    top:320px;
+    left:0;
+}
+.piece22 {
+    background-image: url(./images/imagePuzzles.jpg);
+    background-position: -80px -320px;
+    top:320px;
+    left:80px;
+} 
+.piece23 {
+    background-image: url(./images/imagePuzzles.jpg);
+    background-position: -160px -320px;
+    top:320px;
+    left:160px;
+}
+.piece24 {
+    background-image: url(./images/imagePuzzles.jpg);
+    background-position: -240px -320px;
+    top:320px;
+    left:240px
+}
+@media (max-width: 425px) {
+    .gameName{
+        top:-80px;
+        left:120px;
+        font-size: 30px;
+    }
+    .scoreboard{
+        width: 326px;
+        height: 49px;
+    }
+    .scoreboard > .counter-info{
+        font-size: 18px;
+        width: 100px;
+    }
+    .scoreboard > .time-info{
+        left: 117px;
+        font-size: 14px;
+        width: 80px;
+        height: 16px;
+    }
+    .scoreboard > .help-info{
+        left: 117px;
+        font-size: 14px;
+        width: 80px;
+        height: 16px;
+    }
+    .scoreboard > .best-info{
+        font-size: 18px;
+        width: 100px;
+    }
+    .box-Game {
+        width: 326px;
+        height: 428px;
+    }
+    #puzzle-container {
+        width: 326px;
+        height: 326px; 
+    }
+    .rule-fone{
+        top: 48px;
+        width: 326px;
+        height: 328px;
+    }
+    .rule-info p{
+        font-size: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        top:80px;
+    }
+    .rule-info p::first-line{
+       font-size: 24px;
+    }
+    .win-game{
+        top: 48px;
+        width: 326px;
+        height: 328px;
+    } 
+    .win-game p{
+        font-size: 40px;
+        left: 85px;
+    }
+    .lose-game p{
+        font-size: 40px;
+        top:100px;
+        left: 75px;
+    }
+    .buttons-box{
+        top:5px;
+        left:5px;
+        height: 42px;
+        width: 314px;
+        border:1px solid rgb(255, 255, 255);
+    }
+    .start-button > button{
+        width: 80px;
+        height: 25px;
+        font-size: 16px;
+    }
+    .stop-button > button{
+        width: 80px;
+        height: 25px;
+        font-size: 16px;
+    }
+    .help-button > button {
+        left: 100px;
+        width: 90px;
+        height: 25px;
+        font-size: 16px;
+    }
+    .reset-button > button{
+        width: 80px;
+        height: 25px;
+        font-size: 16px;
+    }
+    .tile {
+        width: 64px;
+        height: 64px;
+    }
+    .piece1 {
+        background-image: url(./images/imagePuzzles326.jpg);
+        background-position: 1px 0;
+        top:0;
+        left:0;
+    }
+    .piece2 {
+        background-image: url(./images/imagePuzzles326.jpg);
+        background-position: -64px -1px;
+        top:0;
+        left:64px;
+    }
+    .piece3 {
+        background-image: url(./images/imagePuzzles326.jpg);
+        background-position: -128px -1px;
+        top:0;
+        left:128px;
+    }
+    .piece4 {
+        background-image: url(./images/imagePuzzles326.jpg);
+        background-position: -192px 0;
+        top:0;
+        left:192px;
+    } 
+    .piece5 {
+        background-image: url(./images/imagePuzzles326.jpg);
+        background-position: -256px 0;
+        top:0;
+        left:256px;
+    }
+    .piece6 {
+        background-image: url(./images/imagePuzzles326.jpg);
+        background-position: -1px -64px;
+        top:64px;
+        left:0;
+    }
+    .piece7 {
+        background-image: url(./images/imagePuzzles326.jpg);
+        background-position: -64px -64px;
+        top:64px;
+        left:64px;
+    } 
+    .piece8 {
+        background-image: url(./images/imagePuzzles326.jpg);
+        background-position: -128px -64px;
+        top:64px;
+        left:128px
+    }
+    .piece9 {
+        background-image: url(./images/imagePuzzles326.jpg);
+        background-position: -192px -64px;
+        top:64px;
+        left:192px;
+    } 
+    .piece10 {
+        background-image: url(./images/imagePuzzles326.jpg);
+        background-position: -256px -64px;
+        top:64px;
+        left:256px
+    }
+    .piece11 {
+        background-image: url(./images/imagePuzzles326.jpg);
+        background-position: -1px -128px;
+        top:128px;
+        left:0;
+    }
+    .piece12 {
+        background-image: url(./images/imagePuzzles326.jpg);
+        background-position: -64px -128px;
+        top:128px;
+        left:64px;
+    } 
+    .piece13 {
+        background-image: url(./images/imagePuzzles326.jpg);
+        background-position: -128px -128px;
+        top:128px;
+        left:128px;
+    }
+    .piece14 {
+        background-image: url(./images/imagePuzzles326.jpg);
+        background-position: -192px -128px;
+        top:128px;
+        left:192px;
+    } 
+    .piece15 {
+        background-image: url(./images/imagePuzzles326.jpg);
+        background-position: -256px -128px;
+        top:128px;
+        left:256px;
+    }
+    .piece16 {
+        background-image: url(./images/imagePuzzles326.jpg);
+        background-position: -1px -192px;
+        top:192px;
+        left:0;
+    }
+    .piece17 {
+        background-image: url(./images/imagePuzzles326.jpg);
+        background-position: -64px -192px;
+        top:192px;
+        left:64px;
+    } 
+    .piece18 {
+        background-image: url(./images/imagePuzzles326.jpg);
+        background-position: -128px -192px;
+        top:192px;
+        left:128px;
+    }
+    .piece19 {
+        background-image: url(./images/imagePuzzles326.jpg);
+        background-position: -192px -192px;
+        top:192px;
+        left:192px
+    } 
+    .piece20 {
+        background-image: url(./images/imagePuzzles326.jpg);
+        background-position: -256px -192px;
+        top:192px;
+        left:256px;
+    }
+    .piece21 {
+        background-image: url(./images/imagePuzzles326.jpg);
+        background-position: -1px -256px;
+        top:256px;
+        left:0;
+    }
+    .piece22 {
+        background-image: url(./images/imagePuzzles326.jpg);
+        background-position: -64px -256px;
+        top:256px;
+        left:64px;
+    } 
+    .piece23 {
+        background-image: url(./images/imagePuzzles326.jpg);
+        background-position: -128px -256px;
+        top:256px;
+        left:128px;
+    }
+    .piece24 {
+        background-image: url(./images/imagePuzzles326.jpg);
+        background-position: -192px -256px;
+        top:256px;
+        left:128px
+    }
+}
