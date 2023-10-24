@@ -6,7 +6,7 @@
 * [X] html
 * [X] css
 ___
-**Link** :
+**Site** :
 [Link to the site with the game](https://rss-2000.github.io/Puzzle-game/)
 ___
 ### Screenshot
