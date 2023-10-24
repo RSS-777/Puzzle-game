@@ -111,7 +111,7 @@ function incrementCounter(status = 'on') {
 };
 
 const gridSize = 5;
-const tileCount = gridSize * gridSize;
+const tileCount = 25;
 const tiles = [];
 for (let i = 1; i <= tileCount; i++) {
     tiles.push(i)

@@ -4,13 +4,9 @@ body {
     justify-content: center;
     align-content: center;
     background-image: radial-gradient(rgb(255, 255, 255), rgb(0, 1, 34));
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
 }
 .gameName{
     position: absolute;
-    z-index: 100;
     top:-100px;
     left:148px;
     font-size: 40px;
