@@ -72,7 +72,7 @@ resetGame.onclick = () => {
 
 helpGame.onclick = () => {
     if (helpInfo.innerText > 0) {
-        claerPieces()
+        hideTiles()
         helpInfo.innerText = helpInfo.innerText - 1
     }
     if (helpInfo.innerText < 1) {
@@ -111,9 +111,9 @@ function incrementCounter(status = 'on') {
 };
 
 const gridSize = 5;
-const tileCount = 25;
+const numberTiles = 25;
 const tiles = [];
-for (let i = 1; i <= tileCount; i++) {
+for (let i = 1; i <= numberTiles; i++) {
     tiles.push(i)
 };
 
@@ -128,7 +128,7 @@ function shuffleTiles() {
 
 function createTiles() {
     puzzleContainer.innerHTML = '';
-    for (let i = 0; i < tileCount; i++) {
+    for (let i = 0; i < numberTiles; i++) {
         const tile = document.createElement('div');
         tile.className = `tile piece${tiles[i]}`;
         tile.setAttribute('data-index', i);
@@ -140,12 +140,12 @@ function createTiles() {
     }
 };
 
-function claerPieces() {
+function hideTiles() {
     winGame.style.display = 'block'
     setTimeout(() => { winGame.style.display = 'none' }, 3000)
 };
 
-function checkWin() {
+function checkWinnings() {
     for (let i = 0; i < tiles.length - 1; i++) {
         if (tiles[i] !== i + 1) {
             return false;
@@ -163,7 +163,7 @@ function moveTile(event) {
         [tiles[currentIndex], tiles[emptyIndex]] = [tiles[emptyIndex], tiles[currentIndex]];
         createTiles();
 
-        if (checkWin()) {
+        if (checkWinnings()) {
             winGame.style.display = 'block';
             winGameText.style.display = 'block'
             helpGame.parentNode.classList.add('off-button')

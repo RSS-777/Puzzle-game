@@ -12,6 +12,4 @@ ___
 ### Screenshot
  <img src="./images/image-game.png" width="50%">
 
-___
-### flowchart:
- <img src="./images/draw-model.jpg" width="50%">
+
