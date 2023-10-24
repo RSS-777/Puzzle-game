@@ -13,5 +13,5 @@ ___
  <img src="./images/image-game.png" width="50%">
 
 ___
-### Draw-model :
+### flowchart:
  <img src="./images/draw-model.jpg" width="50%">
