@@ -6,12 +6,12 @@ const ruleFone = document.querySelector('.rule-fone');
 const winGame = document.querySelector('.win-game');
 const winGameText = document.querySelector('.win-game>p');
 const loseGame = document.querySelector('.lose-game>p');
-const ruleInfo = document.querySelector('.rule-info>p');
+const ruleInfo = document.querySelector('.rule-info>div');
 const audioFone = document.querySelector('.audio-fone');
 const audioWin = document.querySelector('.audio-win');
 const audioLose = document.querySelector('.audio-lose');
 const startGame = document.querySelector('.start-button>button');
-startGame.addEventListener('click', ()=>{
+startGame.addEventListener('click', () => {
     shuffleTiles();
     createTiles();
     startGame.style.display = 'none';
@@ -78,9 +78,9 @@ let flagTime = false;
 let timerId;
 function timeCountdownFunc() {
     let timer = 900;
-    if (timerId){
-       clearTimeout(timerId) 
-    } 
+    if (timerId) {
+        clearTimeout(timerId)
+    }
     function timeCount() {
         if (timer > 0 && flagTime === true) {
             timer--;
