@@ -1,26 +1,18 @@
 const counerInfo = document.querySelector('.counter-info>span');
 const timeInfo = document.querySelector('.time-info>span');
-const helpInfo = document.querySelector('.help-info>span');
 const bestInfo = document.querySelector('.best-info>span');
-const startGame = document.querySelector('.start-button>button');
-const stopGame = document.querySelector('.stop-button>button')
 const helpGame = document.querySelector('.help-button>button');
-const resetGame = document.querySelector('.reset-button>button');
 const ruleFone = document.querySelector('.rule-fone');
 const winGame = document.querySelector('.win-game');
-const winGameText = document.querySelector('.win-game>p')
+const winGameText = document.querySelector('.win-game>p');
 const loseGame = document.querySelector('.lose-game>p');
 const ruleInfo = document.querySelector('.rule-info>p');
 const audioFone = document.querySelector('.audio-fone');
 const audioWin = document.querySelector('.audio-win');
 const audioLose = document.querySelector('.audio-lose');
-helpGame.parentNode.classList.add('off-button')
-resetGame.parentNode.classList.add('off-button')
-resetGame.disabled = true;
-const puzzleContainer = document.getElementById('puzzle-container');
-
-startGame.onclick = () => {
-    shuffleTiles()
+const startGame = document.querySelector('.start-button>button');
+startGame.addEventListener('click', ()=>{
+    shuffleTiles();
     createTiles();
     startGame.style.display = 'none';
     stopGame.style.display = 'block';
@@ -36,13 +28,13 @@ startGame.onclick = () => {
     helpGame.parentNode.classList.remove('off-button');
     resetGame.parentNode.classList.remove('off-button');
     resetGame.disabled = false;
-    counerInfo.innerText = currentCout;
+    counerInfo.innerText = currentCount;
     winGame.style.display = 'none';
-    winGameText.style.display = 'none'
-    incrementCounter('off')
-};
-
-stopGame.onclick = stopGameFunc;
+    winGameText.style.display = 'none';
+    incrementCounter('off');
+});
+const stopGame = document.querySelector('.stop-button>button');
+stopGame.addEventListener('click', stopGameFunc);
 function stopGameFunc() {
     startGame.style.display = 'block';
     stopGame.style.display = 'none';
@@ -52,13 +44,15 @@ function stopGameFunc() {
     loseGame.style.display = 'block';
     flagTime = false;
     helpInfo.innerText = 0;
-    helpGame.parentNode.classList.add('off-button')
-    resetGame.parentNode.classList.add('off-button')
+    helpGame.parentNode.classList.add('off-button');
+    resetGame.parentNode.classList.add('off-button');
     resetGame.disabled = true;
-    incrementCounter('off')
-    shuffleTiles()
+    incrementCounter('off');
+    shuffleTiles();
 };
-
+const resetGame = document.querySelector('.reset-button>button');
+resetGame.parentNode.classList.add('off-button');
+resetGame.disabled = true;
 resetGame.onclick = () => {
     audioFone.load();
     audioFone.play();
@@ -67,10 +61,11 @@ resetGame.onclick = () => {
     helpGame.parentNode.classList.remove('off-button');
     shuffleTiles();
     createTiles();
-    incrementCounter('off')
+    incrementCounter('off');
 };
-
-helpGame.onclick = () => {
+const helpInfo = document.querySelector('.help-info>span');
+helpGame.parentNode.classList.add('off-button');
+helpGame.addEventListener('click', () => {
     if (helpInfo.innerText > 0) {
         hideTiles()
         helpInfo.innerText = helpInfo.innerText - 1
@@ -78,13 +73,14 @@ helpGame.onclick = () => {
     if (helpInfo.innerText < 1) {
         helpGame.parentNode.classList.add('off-button')
     }
-};
-
+});
 let flagTime = false;
 let timerId;
 function timeCountdownFunc() {
     let timer = 900;
-    if (timerId) clearTimeout(timerId)
+    if (timerId){
+       clearTimeout(timerId) 
+    } 
     function timeCount() {
         if (timer > 0 && flagTime === true) {
             timer--;
@@ -98,25 +94,22 @@ function timeCountdownFunc() {
     }
     if (flagTime) timeCount()
 };
-
-let currentCout = 0;
+let currentCount = 0;
 function incrementCounter(status = 'on') {
     if (status === 'on') {
-        currentCout += 1;
-        counerInfo.innerText = currentCout;
+        currentCount += 1;
+        counerInfo.innerText = currentCount;
     } else {
-        currentCout = 0;
+        currentCount = 0;
         counerInfo.innerText = null;
     }
 };
-
 const gridSize = 5;
 const numberTiles = 25;
 const tiles = [];
 for (let i = 1; i <= numberTiles; i++) {
     tiles.push(i)
 };
-
 tiles[tiles.length - 1] = null;
 
 function shuffleTiles() {
@@ -125,7 +118,7 @@ function shuffleTiles() {
         [tiles[i], tiles[j]] = [tiles[j], tiles[i]];
     }
 };
-
+const puzzleContainer = document.getElementById('puzzle-container');
 function createTiles() {
     puzzleContainer.innerHTML = '';
     for (let i = 0; i < numberTiles; i++) {
@@ -139,12 +132,10 @@ function createTiles() {
         }
     }
 };
-
 function hideTiles() {
     winGame.style.display = 'block'
     setTimeout(() => { winGame.style.display = 'none' }, 3000)
 };
-
 function checkWinnings() {
     for (let i = 0; i < tiles.length - 1; i++) {
         if (tiles[i] !== i + 1) {
@@ -153,16 +144,13 @@ function checkWinnings() {
     }
     return true;
 };
-
 function moveTile(event) {
     const currentIndex = parseInt(event.target.getAttribute('data-index'));
     const emptyIndex = tiles.indexOf(null);
-
     if (currentIndex === emptyIndex - 1 || currentIndex === emptyIndex + 1 ||
         currentIndex === emptyIndex - gridSize || currentIndex === emptyIndex + gridSize) {
         [tiles[currentIndex], tiles[emptyIndex]] = [tiles[emptyIndex], tiles[currentIndex]];
         createTiles();
-
         if (checkWinnings()) {
             winGame.style.display = 'block';
             winGameText.style.display = 'block'
