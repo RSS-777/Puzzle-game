@@ -11,5 +11,9 @@ ___
 ___
 ### Screenshot
  <img src="./images/image-game.png" width="50%">
+ <img src="./images/image-mobil.jpg" width="50%">
 
+___
+### Flowchart
 
+ <img src="./images/drow-model.jpg" width="50%">
