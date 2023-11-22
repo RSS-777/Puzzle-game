@@ -7,7 +7,7 @@
 * [X] css
 ___
 **Site** :
-[Link to the site with the game](https://rss-2000.github.io/Puzzle-game/)
+[Link to the site with the game](https://rss-777.github.io/Puzzle-game/)
 ___
 ### Screenshot
  <img src="./images/image-game.png" width="50%">
