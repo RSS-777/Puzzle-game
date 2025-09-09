@@ -1,19 +1,37 @@
-## Puzzle-game
->Hello, my name is **Sergey**! This is a puzzle game! The rules are as follows: the puzzle must be completed in 15 minutes, there are 3 clues. Each move is recorded in the information window. After the game ends, shows the best score (fewer moves per game)!
+ # 🧩 Puzzle Game
+>Hello, my name is **Sergey**!  
+This is a simple puzzle game built with **HTML, CSS, and JavaScript**.  
 
-### Tech stack
-* [X] javascript
-* [X] html
-* [X] css
-___
-**Site** :
-[Link to the site with the game](https://rss-777.github.io/Puzzle-game/)
-___
-### Screenshot
- <img src="./images/image-game.png" width="50%">
- <img src="./images/image-mobil.jpg" width="50%">
+## 🎮 Game Rules
+- Complete the puzzle in **15 minutes** ⏱  
+- You have **3 clues** to help you 💡  
+- Each move is recorded in the **information window** 🔢  
+- After the game ends, the **best score** (fewest moves) is shown 🏆  
 
-___
-### Flowchart
+## 🔨 Tech Stack
+- [X] JavaScript  
+- [X] HTML5  
+- [X] CSS3  
 
- <img src="./images/drow-model.jpg" width="50%">
+---
+
+## 🚀 Live Demo
+👉 [Play Puzzle Game here](https://rss-777.github.io/Puzzle-game/)  
+
+---
+
+## 📸 Screenshots
+<div style="display:flex; align-items: start; justify-content:center; gap: 10px;">
+  <img src="./images/image-game.png" width="60%">
+  <img src="./images/image-mobil.jpg" width="30%">
+ </div>
+
+---
+
+## 🔗 Flowchart
+<img src="./images/drow-model.jpg" width="60%">
+
+---
+
+## 📜 License
+Free to use and modify. ⭐ If you like this project, consider giving it a star!
